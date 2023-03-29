@@ -63,3 +63,18 @@ Kind of services:
 - **Node Port**: Makes a pod accessible from outside the cluster. Usually only used for dev purposes. (Just development purposes!)
 - **Load Balancer**: Makes a pod accessible from outside the cluster. This is the right way to expose a pod to the outside world. (Is like Node Port but the right way). It is used to make request from the browser or other clients like Postman
 - **External Name**: Redirects an in-cluster request to a CNAME URL.
+
+Get services: `k get services`
+
+Get info from the service: `k describe service posts-srv`
+
+Access the service with Minikube: `<minikube-ip>:<service-port/posts>`
+
+Get Minikube IP: `minikube ip`
+
+### Updates
+
+With each update in the code we have to rebuild the docker image, pus into docker hub and redeploy. To redeploy we use rollout:
+
+- `k rollout restart deployment posts-depl`
+- `k rollout restart deployment event-bus-depl`
